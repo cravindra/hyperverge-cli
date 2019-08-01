@@ -14,6 +14,19 @@ const packageJson = require('./package.json');
  */
 const availableActions = ['test', 'readPAN', 'readPassport', 'readAadhaar', 'readKYC'];
 
+/**
+ * Helper to convert paths to absolute paths
+ * @param filePath - path to make absolute
+ * @returns {*}
+ */
+function normalisePath(filePath) {
+    if (/^\//.test(filePath)) {
+        // Absolute path, use as is
+        return filePath;
+    }
+    return path.resolve(process.cwd(), filePath);
+}
+
 
 /**
  * File types supported by hyperverge
@@ -91,7 +104,8 @@ function listFiles(directory) {
     const dirPaths = entryPaths.filter(entryPath => !filePaths.includes(entryPath));
     const dirFiles = dirPaths.reduce((prev, curr) => prev.concat(listFiles(curr)), []);
     return [...filePaths, ...dirFiles]
-        .filter(path => supportedFileExtensions.test(path));
+        .filter(path => supportedFileExtensions.test(path))
+        .map(path => normalisePath(path));
 }
 
 
@@ -137,7 +151,7 @@ if (cliConfig) {
             host,
             action, directory, file, output, appKey, appId
 
-        } = require(cliConfig);
+        } = require(path.resolve(process.cwd(), cliConfig));
 
         // Update CONFIG object with values from the provided JSON.
         // CLI Parameters get priority
@@ -161,6 +175,10 @@ if (cliConfig) {
 // Normalise trailing slash and default host if needed
 CONFIG.host = CONFIG.host || 'https://ind-docs.hyperverge.co/v2.0';
 CONFIG.host = CONFIG.host[CONFIG.host.length - 1] === '/' ? CONFIG.host : CONFIG.host + '/';
+
+// Normalise the paths
+CONFIG.directory = CONFIG.directory && normalisePath(CONFIG.directory);
+CONFIG.file = CONFIG.file && normalisePath(CONFIG.file);
 
 /**
  * Helper to mask sensitive strings
@@ -239,6 +257,7 @@ switch (action) {
             try {
                 // Try reading the directory recursively for compatible files
                 const files = listFiles(directory);
+                console.log(JSON.stringify(files,null,2));
 
                 // Initialise lists to track results, errors
                 const results = [];
