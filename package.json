@@ -1,5 +1,5 @@
 {
-  "name": "hyperverge-cli",
+  "name": "hyperverge",
   "version": "0.1.0",
   "description": "A CLI tool to interface with the Hyperverge API",
   "main": "hyperverge.js",
