@@ -98,7 +98,7 @@ function listFiles(directory) {
 // Setup CLI API and parse the incoming cli Arguments
 program
     .version(packageJson.version)
-    .option('-c, --config [path]', 'Config JSON File containing any or all of the other parameters. action, directory, file, output, appKey, appId, host', './credentials.json')
+    .option('-c, --config [path]', 'Config JSON File containing any or all of the other parameters. action, directory, file, output, appKey, appId, host')
     .option('-a, --action [action]', `The action to run. One of ${JSON.stringify(availableActions)}`, 'test')
     .option('-d, --directory [path]', 'The path to a folder of items to be used for the request')
     .option('-f, --file [path]', 'The path to a folder of items to be used for the request')
