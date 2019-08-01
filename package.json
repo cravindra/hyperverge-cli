@@ -1,0 +1,45 @@
+{
+  "name": "hyperverge-cli",
+  "version": "0.1.0",
+  "description": "A CLI tool to interface with the Hyperverge API",
+  "main": "hyperverge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Chirag Ravindra",
+    "email": "cravindra@gmail.com",
+    "url": "https://github.com/cravindra"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "request": "^2.88.0"
+  },
+  "bin": {
+    "hyperverge": "hyperverge.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cravindra/hyperverge-cli"
+  },
+  "homepage": "https://github.com/cravindra/hyperverge-cli/?ref=npm",
+  "bugs": "https://github.com/cravindra/hyperverge-cli/issues",
+  "keywords": [
+    "hyperverge",
+    "cli",
+    "hyperverge-cli",
+    "kyc",
+    "read kyc",
+    "pan",
+    "read pan",
+    "aadhar",
+    "read aadhar",
+    "document verificiation",
+    "document",
+    "verfication",
+    "online verification"
+  ]
+}
