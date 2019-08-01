@@ -96,4 +96,34 @@ hyperverge -a readKYC -d /path/to/directory -c config.json
 ```
 
 The output will be a single JSON object having the keys `success` and `errors` which are both array of objects similar 
-to the one above. 
+to the one above.
+
+
+
+## Configuration
+
+This configuration can be passed via the CLI options listed above or via JSON configuration file.
+
+Sample Configuration JSON:
+
+```json
+{
+  "host": "https://ind-docs.hyperverge.co/v2.0",
+  "appId": "xxxxx",
+  "appKey": "xxxxx",
+  "action": "readKYC",
+  "file": "/path/to/file",
+  "directory": "/path/to/directory",
+  "output": "/path/to/output"
+}
+``` 
+
+
+#### Notes:
+
+* Passing both `file` and `directory` will cause an error. The CLI must be passed one or the other but not both.
+* The `test` action does not require credentials but every other action must have `appKey` and `appId` passed
+either via CLI or via the JSON configuration file.
+* If an option is passed to the CLI both via a JSON configuration and CLI parameters, the CLI parameter values get 
+precedence
+* All options are supported both via JSON and CLI parameters

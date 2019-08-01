@@ -116,7 +116,7 @@ program
     .option('-a, --action [action]', `The action to run. One of ${JSON.stringify(availableActions)}`, 'test')
     .option('-d, --directory [path]', 'The path to a folder of items to be used for the request')
     .option('-f, --file [path]', 'The path to a folder of items to be used for the request')
-    .option('-o, --output [path]', 'The file to write the result of the operation to', '')
+    .option('-o, --output [path]', 'The file to write the result of the operation to. If no file is specified, use `stdout`')
     .option('-k, --app-key [key]', 'The Hyperverge App Key', '')
     .option('-i, --app-id [id]', 'The Hyperverge App ID', '')
     .option('-h, --host [host]', 'The Hypervege host to use')
